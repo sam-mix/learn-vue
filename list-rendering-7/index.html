@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list-rendering-7</title>
+</head>
+<body>
+    <div id="app">
+        <template v-for="book in books">
+            <li>书名: {{book.name}}, 作者: {{book.author}}</li>
+        </template>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books : [
+                    {
+                        name: '《Vue.js实战》',
+                        author: 'xyz',
+                    },
+                    {
+                        name: '《JavaScript 语言精粹》',
+                        author: 'zzz',
+                    },
+                    {
+                        name: '《JavaScript 666》',
+                        author: 'YYY',
+                    },
+                    {
+                        name: '《JavaScript 牛逼》',
+                        author: 'WWW',
+                    },
+                    
+                    {
+                        name: '《JavaScript 超屌》',
+                        author: 'xxx',
+                    },
+                ]
+            }
+        })
+        app.books.push({
+            name: '《CSS揭秘》',
+            author: '[希] Lea Verou',
+        })
+
+        app.books = app.books.filter(function(x){
+            return x.name.match(/JavaScript/)
+        })
+
+        app.books.splice(1)
+
+
+    </script>
+</body>
+</html>

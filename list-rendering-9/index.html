@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list-rendering-9</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <template v-for="b in sortedBooks">
+                <li>name: {{b.name}}, author: {{b.author}}</li>
+            </template>
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [{
+                        name: '23',
+                        author: '4',
+                    },
+                    {
+                        name: '111',
+                        author: '2',
+                    },
+
+                    {
+                        name: '5',
+                        author: '6',
+                    },
+                ]
+            },
+            computed: {
+                sortedBooks: function () {
+                    return this.books.sort(function (a, b) {
+                        return a.name.length < b.name.length
+                    })
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
