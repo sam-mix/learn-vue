@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on-4</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="show">这是一段文字</p>
+        <button v-on:click="close">点击隐藏</button>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                show: true
+            },
+            methods: {
+                init: function(text) {
+                    console.log(text)
+                },
+                close: function() {
+                    this.show = false
+                }
+            },
+            mounted: function() {
+                this.init('在初始化时调用')
+            },
+        })
+
+        app.init('通过外部调用')
+    </script>
+
+</body>
+</html>
