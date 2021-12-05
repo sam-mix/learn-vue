@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定值-选择列表</title>
+</head>
+<body>
+    <div id="app">
+        <select v-model="selected">
+            <option :value="{number: 123123123}">123</option>
+        </select>
+        {{selected.number}}
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    selected: ''
+                }
+            })
+        </script>
+</body>
+</html>
