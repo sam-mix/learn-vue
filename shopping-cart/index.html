@@ -20,7 +20,24 @@
                         <th>操作</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr v-for="(item, i) in list">
+                        <td>{{i + 1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                        <td>
+                            <button @click="handleReduce(i)" :disabled="item.count===1">-</button>
+                            {{item.count}}
+                            <button @click="handleAdd(i)">+</button>
+                        </td>
+                        <td>
+                            <button @click="handleRemove(i)">移除</button>
+                        </td>
+
+                    </tr>
+                </tbody>
             </table>
+            <div>总价: ￥{{totalPrice}}</div>
         </template>
         <div v-else>购物车为空</div>
     </div>
