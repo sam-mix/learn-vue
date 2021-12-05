@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件与复用</title>
+</head>
+<body>
+    <div id="app">
+        <Card style="width: 350ps;">
+            <p slot="title">与xxx 聊天中</p>
+            <a href="#" slot="extra">
+                <Icon type="android-close" size="18"></Icon>
+            </a>
+            <div style="height: 100px;"></div>
+            <div>
+                <Row :gutter="16">
+                    <i-col span="17">
+                        <i-input v-model="value" placeholder="请输入..."></i-input>
+                    </i-col>
+                    <i-col span="4">
+                        <i-button type="primary" icon="paper-airplane">发送</i-button>
+                    </i-col>
+                </Row>
+            </div>
+        </Card>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                value: ''
+            }
+        })
+    </script>
+</body>
+</html>
