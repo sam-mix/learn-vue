@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件与复用30-动态组件-通过组件对象直接绑定</title>
+</head>
+<body>
+    <div id="app">
+        <component :is="currentView"></component>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var home = {
+            template: '<h1>Welcome Home!</h1>',
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                currentView: home
+            },
+        })
+    </script>
+</body>
+</html>
