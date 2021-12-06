@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>组件与复用</title>
+    <title>组件与复用6</title>
 </head>
 <body>
     <div id="app">
+        <my-component></my-component>
+        <my-component></my-component>
         <my-component></my-component>
     </div>
 
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script>
-        var child = {
-            template: '<div>局部组件的内容</div>'
-        }
+        // 每个组件的调用都是单独的
+        Vue.component('my-component', {
+            template: '<button @click="counter++">{{counter}}</button>',
+            data: function(){
+                return {
+                    counter: 0
+                }
+            }
+        })
 
         var app = new Vue({
-            el: '#app',
-            components: {
-                'my-component': child,
-            },
+            el: '#app'
         })
     </script>
-    
 </body>
 </html>

@@ -4,26 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>组件与复用</title>
+    <title>组件与复用10</title>
 </head>
 <body>
     <div id="app">
-        <my-component></my-component>
+        <my-component message="[1,2,3]"></my-component>
+        <my-component :message="[1,2,3]"></my-component>
     </div>
 
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script>
-        var child = {
-            template: '<div>局部组件的内容</div>'
-        }
+        Vue.component('my-component', {
+            props: ['message'],
+            template: '<div>{{message.length}}, {{typeof message}}</div>'
+        })
 
         var app = new Vue({
-            el: '#app',
-            components: {
-                'my-component': child,
-            },
+            el: '#app'
         })
     </script>
-    
 </body>
 </html>

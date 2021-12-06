@@ -8,22 +8,26 @@
 </head>
 <body>
     <div id="app">
-        <my-component></my-component>
+        <table>
+            <tbody is="my-component"></tbody>
+        </table>
     </div>
+
 
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script>
-        var child = {
-            template: '<div>局部组件的内容</div>'
-        }
+        Vue.component('my-component', {
+            template: '<div>{{message}}</div>',
+            data: function() {
+                return {
+                    message: '组件内容'
+                }
+            }
+        })
 
         var app = new Vue({
             el: '#app',
-            components: {
-                'my-component': child,
-            },
         })
     </script>
-    
 </body>
 </html>

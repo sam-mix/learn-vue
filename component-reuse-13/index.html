@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件与复用13-数据验证</title>
+</head>
+<body>
+    <div id="app">
+        <my-component prop-a="1" prop-b="abc" prop-d="true" prop-e="[1,2,3]" prop-f="10"></my-component>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+
+        /**
+         * 验证的tyoe类型可以是:
+         * String 
+         * Number
+         * Boolean
+         * Object
+         * Array
+         * Fuction
+         * type 也可以是一个自定义构造器， 使用instanceof 检测。
+         * 当 prop 验证失败时， 在开发版本下会在控制台抛出一条警告。
+         * 
+         */
+
+
+        Vue.component('my-component', {
+            template: '<div>{{typeof propA}}, {{typeof  propB}}, {{typeof propC}}, {{typeof propD}}, {{typeof propE}}, {{typeof propF}}</div>',
+            props: {
+                // 必须是数字类型
+                propA: Number,
+
+                // 必须是字符串或数字类型
+                propB: [String, Number],
+
+                // 布尔型， 如果没有定义， 默认值是true
+                propC:{
+                    type: Boolean,
+                    default: true,
+                },
+
+                // 数字 必传
+                propD:{
+                    type: Number,
+                    required: true,
+                },
+
+                // 如果是数组或者对象， 默认值必须是一个函数返回
+                propE: {
+                    type: Array,
+                    default: function() {
+                        return []
+                    }
+                },
+
+                // 自定义一个验证函数
+                propF: {
+                    validaor: function(value) {
+                        return value > 10
+                    }
+                },
+            },
+            data: function() {
+                return {
+                    propA: 1,
+                    propB: '123',
+                    propC: false,
+                    propD: 123,
+                    propE: [1,2,3],
+                    propF: 11,
+                }
+            },
+
+        })
+
+
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+
+</body>
+</html>
