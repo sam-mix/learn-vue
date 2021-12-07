@@ -1,36 +1,34 @@
-Vue.component('pane',{
+Vue.component('pane', {
     name: 'pane',
-    template:'\
-    <div class="pane" v-show="show">\
-        <slot></slot>\
-    </div>\
-    ',
+    template: '\
+        <div class="pane" v-show="show"> \
+            <slot></slot> \
+        </div>',
     props: {
         name: {
-            type: String,
+            type: String
         },
         label: {
             type: String,
-            default:'',
-        },
-
+            default: ''
+        }
     },
-    data: function() {
+    data: function () {
         return {
-            show: true,
+            show: true
         }
     },
     methods: {
-        updateNav() {
-            this.$parent.updateNav()
-        },
+        updateNav () {
+            this.$parent.updateNav();
+        }
     },
     watch: {
-        label() {
-            this.updateNav()
-        },
+        label () {
+            this.updateNav();
+        }
     },
-    mounted() {
-        this.updateNav()
-    },
+    mounted () {
+        this.updateNav();
+    }
 })
