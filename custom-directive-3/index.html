@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令3</title>
+</head>
+<body>
+    <div id="app">
+        <div v-test="{msg: 'some message', name: 'lazada', age: 12}"></div>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        Vue.directive('test', {
+            bind: function(el, binding, vnode) {
+                console.log(el, binding, vnode)
+                console.log(binding.value.msg)
+                console.log(binding.value.name)
+                console.log(binding.value.age)
+            }
+        })
+
+        new Vue({
+            el: '#app',
+        }) 
+
+    </script>
+
+</body>
+</html>
