@@ -9,7 +9,7 @@ Vue.directive('clickoutside', {
             }
         }
         el.__vueClickOutside__ = documentHandler
-        document.addEventListener('click', el.documentHandler)
+        document.addEventListener('click', documentHandler)
     },
     unbind: function (el, binding) {
         document.removeEventListener('click', el.__vueClickOutside__)
